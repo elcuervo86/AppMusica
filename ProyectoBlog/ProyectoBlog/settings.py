@@ -56,7 +56,7 @@ ROOT_URLCONF = 'ProyectoBlog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['C:/Users/exb97526/Documents/Curso Python/Coderhouse/ProyectoBlog/ProyectoBlog/AppMusica/templates'],
+        'DIRS': ['C:/Users/exb97526/Documents/Curso Python/Coderhouse/ProyectoBlog/ProyectoBlog/AppMusica/templates/AppMusica'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

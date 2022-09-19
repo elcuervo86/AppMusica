@@ -1,0 +1,23 @@
+{% extends 'padre.html'%} 
+{% load static %}
+{% block contenidoQueCambia %}
+<h1>Formulario</h1> 
+<h1>Agregar post Metalero</h1>
+    
+    {% if miFormulario.errors %}
+
+    <p style="color: red;"> Por favor, revisar los datos cargados!!</p>
+
+    {% endif %}
+    <h5>Formato para la fecha: AAAA-MM-DD</h5>
+    <form action="" method="POST">{% csrf_token %}
+        <table>
+            {{ miFormulario.as_table }}
+
+        </table>
+        
+        <input type="submit", value="Enviar">
+
+    </form>
+{% endblock %}
+
