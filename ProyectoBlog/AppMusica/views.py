@@ -1,3 +1,4 @@
+from msilib.schema import Class
 from django.shortcuts import render, HttpResponse
 from django.http.request import QueryDict
 from django.http import HttpResponse
@@ -7,7 +8,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
-
+from django.views.generic import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 # Create your views here.
 
 def inicio(request):
@@ -37,18 +41,27 @@ def blogRock(request):
 
       return render(request, "AppMusica/rock.html", {"miFormulario": miFormulario})
 
-@login_required
-def leerBlogRock(request):
-      postsRock = BlogRock.objects.all() #trae todos los posts de Rock
-      contexto= {"postsRock":postsRock} 
-      return render(request, "AppMusica/leerBlogRock.html",contexto)
+class BlogRockList(ListView):
+      model = BlogRock
+      template_name: "AppMusica/blogrock_list.html"
 
-def eliminarBlogRock(request, titulo):
-      postsRock = BlogRock.objects.get(titulo= titulo) 
-      postsRock.delete()
-      postsRock = BlogRock.objects.all() #trae todos los posts de Rock
-      contexto= {"postsRock":postsRock} 
-      return render(request, "AppMusica/leerBlogRock.html",contexto)
+class BlogRockDetalle(DetailView):
+    model = BlogRock
+    template_name = "AppMusica/blogrock_detalle.html"
+
+class BlogRockCreacion(CreateView):
+    model = BlogRock
+    success_url = "/AppMusica/rock/list"
+    fields = ['titulo', 'subtitulo', 'cuerpo', 'autor', 'imagen']
+
+class BlogRockUpdate(UpdateView):
+    model = BlogRock
+    success_url = "/AppMusica/rock/list"
+    fields = ['titulo', 'subtitulo', 'cuerpo', 'autor', 'imagen']
+
+class BlogRockDelete(DeleteView):
+    model = BlogRock
+    success_url = "/AppMusica/rock/list"
 
 # Vistas Blog Metal
 @login_required
@@ -61,7 +74,7 @@ def blogMetal(request):
 
             if miFormulario.is_valid:
                   informacion = miFormulario.cleaned_data
-                  blogMetal = BlogMetal(titulo=informacion['titulo'], subtitulo=informacion['subtitulo'], cuerpo=informacion['cuerpo'], imagen=informacion['imagen'], autor=informacion['autor'])
+                  blogMetal = BlogMetal (titulo=informacion['Titulo'], subtitulo=informacion['Subtitulo'], cuerpo=informacion['Cuerpo'], imagen=informacion['Imagen'], autor=informacion['Autor'])
                   blogMetal.save()
                   return render(request, "AppMusica/inicio.html")
       else:
@@ -69,11 +82,28 @@ def blogMetal(request):
 
       return render(request, "AppMusica/metal.html", {"miFormulario": miFormulario})
 
-@login_required
-def leer_blogMetal(request):
-      postsMetal = BlogMetal.objects.all() #trae todos los posts de Rock
-      contexto= {"Posts":postsMetal} 
-      return render(request, "AppMusica/metal.html",contexto)
+
+class BlogMetalList(ListView):
+      model = BlogMetal
+      template_name: "AppMusica/blogmetal_list.html"
+
+class BlogMetalDetalle(DetailView):
+    model = BlogMetal
+    template_name = "AppMusica/blogmetal_detalle.html"
+
+class BlogMetalCreacion(CreateView):
+    model = BlogMetal
+    success_url = "/AppMusica/metal/list"
+    fields = ['titulo', 'subtitulo', 'cuerpo', 'autor', 'imagen']
+
+class BlogMetalUpdate(UpdateView):
+    model = BlogMetal
+    success_url = "/AppMusica/metal/list"
+    fields = ['titulo', 'subtitulo', 'cuerpo', 'autor', 'imagen']
+
+class BlogMetalDelete(DeleteView):
+    model = BlogMetal
+    success_url = "/AppMusica/metal/list"
 
 @login_required
 def comentario(request):
@@ -92,6 +122,29 @@ def comentario(request):
             miFormulario = ComentarioForm()
 
       return render(request, "AppMusica/comentario.html", {"miFormulario": miFormulario})
+
+class ComentarioList(ListView):
+      model = Comentario
+      template_name: "AppMusica/comentario_list.html"
+
+class ComentarioDetalle(DetailView):
+    model = Comentario
+    template_name = "AppMusica/comentario_detalle.html"
+
+class ComentarioCreacion(CreateView):
+    model = Comentario
+    success_url = "/AppMusica/comentario/list"
+    fields = ['nombre', 'contenido']
+
+class ComentarioUpdate(UpdateView):
+    model = Comentario
+    success_url = "/AppMusica/comentario/list"
+    fields = ['nombre', 'contenido']
+
+class ComentarioDelete(DeleteView):
+    model = Comentario
+    success_url = "/AppMusica/comentario/list"
+
 
 #Para el login
 

@@ -1,0 +1,16 @@
+{% extends 'AppMusica/padre.html'%}  
+{% load static %}
+{% block contenidoQueCambia %}
+<body>
+
+   
+    <p>Nombre: <i>{{ comentario.nombre }}</i></p>
+    <p>Comentario: <i>{{ comentario.contenido }}</i></p>
+    <p>Fecha: <i>{{ comentario.fecha }}</i></p>
+    <p>
+        <a href="{% url 'List' %}">Regresar</a>
+    </p>
+
+    
+</body>
+{% endblock %}

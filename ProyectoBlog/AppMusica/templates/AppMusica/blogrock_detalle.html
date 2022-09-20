@@ -1,0 +1,21 @@
+{% extends 'AppMusica/padre.html'%}  
+{% load static %}
+{% block contenidoQueCambia %}
+
+<body>
+ 
+        <p>Titulo: <i>{{ campo.titulo }}</i></p>
+        <p>Subtitulo: <i>{{ campo.subtitulo }}</i></p>
+        <p>Cuerpo: <i>{{ campo.cuerpo }}</i></p>
+        <p>Fecha: <i>{{ campo.fecha }}</i></p>
+        <p>Imagen: <i>{{ campo.imagen }}</i></p>
+        <p>Autor: <i>{{ campo.autor }}</i></p>
+    
+    
+    <p>
+        <a href="{% url 'rockList' %}">Regresar</a>
+    </p>
+      
+</body>
+
+{% endblock %}

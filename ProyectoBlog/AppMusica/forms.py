@@ -6,13 +6,6 @@ from ckeditor.fields import RichTextField
 from .models import BlogRock, BlogMetal, Comentario
 
 
-#class BlogRockForm(forms.Form):
- #   titulo = forms.CharField(max_length=200)
-  #  subtitulo = forms.CharField(max_length=200)
-   # cuerpo = RichTextField()
-   # fecha = forms.DateField()
-   # imagen = forms.TextInput()
-   # autor = forms.CharField(max_length=200)
 
 class BlogRockForm(forms.ModelForm):
     class Meta:
@@ -24,13 +17,7 @@ class BlogMetalForm(forms.ModelForm):
     class Meta:
         model = BlogMetal
         fields = ('titulo', 'subtitulo', 'cuerpo', 'imagen', 'autor')
-#class BlogMetalForm(forms.Form):
-  #  titulo = forms.CharField(max_length=200)
-  #  subtitulo = forms.CharField(max_length=200)
-  #  cuerpo = RichTextField()
-  #  fecha = forms.DateField(auto_now_add=True)
-  #  imagen = forms.TextInput()
-  #  autor = forms.CharField(max_length=200)
+
 
 class ComentarioForm(forms.ModelForm):
     class Meta:

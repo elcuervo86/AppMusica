@@ -1,0 +1,12 @@
+{% extends 'AppMusica/padre.html'%}  
+{% load static %}
+{% block contenidoQueCambia %}
+
+<body>
+
+    <form method="post">{% csrf_token %}
+        ¿Estás seguro que deseas borrar el posteo "{{ object }}"?
+        <input type="submit" value="Submit" />
+    </form>
+</body>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'AppMusica/padre.html'%}  
+{% load static %}
+{% block contenidoQueCambia %}
+
+<body>
+
+    <h1>LISTA DE POSTEOS ROCKEROS</h1>
+    <ul>
+        {% for campo in object_list %}
+
+            <li>
+                <p>TITULO: {{ campo.titulo }} </p>
+                <p>SUBTITULO: {{ campo.subtitulo }}</p>
+                <p>CUERPO: {{ campo.cuerpo }}</p>
+                <p>FECHA: {{ campo.fecha }} </p>
+                <p>AUTOR: {{ campo.autor }}</p>
+                <p> 
+                    <a href="{% url 'rockDetail' campo.id %}" >Ver</a> | 
+                    <a href="{% url 'rockEdit' campo.id %}" >Editar</a> | 
+                    <a href="{% url 'rockDelete' campo.id %}" >Borrar</a> 
+                
+                </p> 
+            </li>
+
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'rockNew'  %}">CREAR NUEVO POST</a>  
+
+    <br>
+
+    <button>
+        <a href="{% url 'Inicio'  %}">Volver a Inicio</a>
+    </button>
+
+</body>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'AppMusica/padre.html'%}  
+{% load static %}
+{% block contenidoQueCambia %}
+
+<body>
+
+    <h1>LISTA DE COMENTARIOS</h1>
+    <ul>
+        {% for comentario in object_list %}
+
+            <li>
+                <p>NOMBRE: {{ comentario.nombre }} </p>
+                <p>FECHA: {{ comentario.fecha }} </p>
+                <p>COMENTARIO: {{ comentario.contenido }} </p>
+                <p> 
+                    <a href="{% url 'Detail' comentario.id %}">Ver</a> | 
+                    <a href="{% url 'Edit' comentario.id %}">Editar</a> | 
+                    <a href="{% url 'Delete' comentario.id %}">Borrar</a> 
+                
+                </p> 
+            </li>
+
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'New'  %}">Nuevo</a> | 
+
+    <br>
+
+    <button>
+        <a href="{% url 'Inicio'  %}">Volver</a>
+    </button>
+
+</body>
+{% endblock %}

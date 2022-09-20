@@ -7,4 +7,3 @@ from AppMusica.models import BlogMetal, BlogRock, Comentario
 admin.site.register(BlogRock)
 admin.site.register(BlogMetal)
 admin.site.register(Comentario)
-#admin.site.register(Perfil)
