@@ -12,7 +12,8 @@ urlpatterns = [
     path('registro', views.registro, name="Registro"),
     path('logout', LogoutView.as_view(template_name='AppMusica/logout.html'), name='Logout'),
     path('editarPerfil', views.editarPerfil, name = "EditarPerfil"),
-    #path('leerCd', views.leerCds, name = "LeerCds"),
+    path('leerBlockRock', views.leerBlogRock, name = "LeerBlogRock"),
+    path('eliminarBlockRock', views.eliminarBlogRock, name = "EliminarBlogRock"),
     #path('leerVinilo', views.leerVinilos, name = "LeerVinilos"),
     #path('buscarCliente/', views.buscarCliente)
 

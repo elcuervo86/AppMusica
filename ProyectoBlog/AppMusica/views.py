@@ -38,11 +38,17 @@ def blogRock(request):
       return render(request, "AppMusica/rock.html", {"miFormulario": miFormulario})
 
 @login_required
-def leer_blogRock(request):
+def leerBlogRock(request):
       postsRock = BlogRock.objects.all() #trae todos los posts de Rock
-      contexto= {"PostsRock":postsRock} 
-      return render(request, "AppMusica/rock.html",contexto)
+      contexto= {"postsRock":postsRock} 
+      return render(request, "AppMusica/leerBlogRock.html",contexto)
 
+def eliminarBlogRock(request, titulo):
+      postsRock = BlogRock.objects.get(titulo= titulo) 
+      postsRock.delete()
+      postsRock = BlogRock.objects.all() #trae todos los posts de Rock
+      contexto= {"postsRock":postsRock} 
+      return render(request, "AppMusica/leerBlogRock.html",contexto)
 
 # Vistas Blog Metal
 @login_required

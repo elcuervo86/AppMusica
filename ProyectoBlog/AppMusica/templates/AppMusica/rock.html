@@ -19,16 +19,9 @@
         <input type="submit", value="Enviar">
 
     </form>
-    {% for p in postsRock %}
-
-        <li>{{p}}</li>  
-        <button>
-            <a href="{% url 'EliminarPostRock' p.titulo %}"> Eliminar</a>
-            <a href="{% url 'EditarPostRock' p.titulo %}"> Editar</a>
-        </button>
-
-
-    {% endfor %}
+    <button>
+        <a href="{% url 'LeerBlogRock' %}"> Listar Posts</a>
+    </button>
     
 {% endblock %}
 

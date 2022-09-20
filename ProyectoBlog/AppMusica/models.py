@@ -24,7 +24,7 @@ class BlogRock(models.Model):
 
 class BlogMetal(models.Model):
     titulo = models.CharField(max_length=200)
-    subtitulo = models.SlugField(max_length=200)
+    subtitulo = models.CharField(max_length=200)
     cuerpo = RichTextField()
     fecha = models.DateField(auto_now_add=True)
     imagen = models.TextField()
