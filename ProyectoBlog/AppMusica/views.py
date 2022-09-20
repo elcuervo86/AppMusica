@@ -1,7 +1,5 @@
 from msilib.schema import Class
-from django.shortcuts import render, HttpResponse
-from django.http.request import QueryDict
-from django.http import HttpResponse
+from django.shortcuts import render
 from AppMusica.forms import BlogRockForm, BlogMetalForm, ComentarioForm, UserRegisterForm, UserEditForm
 from AppMusica.models import BlogRock, BlogMetal, Comentario
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -39,7 +37,7 @@ def blogRock(request):
       else:
             miFormulario = BlogRockForm()
 
-      return render(request, "AppMusica/rock.html", {"miFormulario": miFormulario})
+      return render(request, "AppMusica/blogrock_list.html", {"miFormulario": miFormulario})
 
 class BlogRockList(ListView):
       model = BlogRock
@@ -80,7 +78,7 @@ def blogMetal(request):
       else:
             miFormulario = BlogMetalForm()
 
-      return render(request, "AppMusica/metal.html", {"miFormulario": miFormulario})
+      return render(request, "AppMusica/blogmetal_list.html", {"miFormulario": miFormulario})
 
 
 class BlogMetalList(ListView):

@@ -6,18 +6,18 @@
 
     <h1>LISTA DE POSTEOS METALEROS</h1>
     <ul>
-        {% for campo in object_list %}
+        {% for blogMetal in object_list %}
 
             <li>
-                <p>TITULO: {{ campo.titulo }} </p>
-                <p>SUBTITULO: {{ campo.subtitulo }}</p>
-                <p>CUERPO: {{ campo.cuerpo }}</p>
-                <p>FECHA: {{ campo.fecha }} </p>
-                <p>AUTOR: {{ campo.autor }}</p>
+                <p>TITULO: {{ blogMetal.titulo }} </p>
+                <p>SUBTITULO: {{ blogMetal.subtitulo }}</p>
+                <p>CUERPO: {{ blogMetal.cuerpo }}</p>
+                <p>FECHA: {{ blogMetal.fecha }} </p>
+                <p>AUTOR: {{ blogMetal.autor }}</p>
                 <p> 
-                    <a href="{% url 'metalDetail' campo.id %}">Ver</a> | 
-                    <a href="{% url 'metalEdit' campo.id %}">Editar</a> | 
-                    <a href="{% url 'metalDelete' campo.id %}">Borrar</a> 
+                    <a href="{% url 'metalDetail' blogMetal.id %}">Ver</a> | 
+                    <a href="{% url 'metalEdit' blogMetal.id %}">Editar</a> | 
+                    <a href="{% url 'metalDelete' blogMetal.id %}">Borrar</a> 
                 
                 </p> 
             </li>
