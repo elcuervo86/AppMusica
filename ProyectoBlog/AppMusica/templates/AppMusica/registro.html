@@ -1,3 +1,6 @@
+{% extends 'AppMusica/padre.html'%} 
+{% load static %}
+{% block contenidoQueCambia %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +14,7 @@
     <form action="" method="POST">
         {% csrf_token %}
             
-        {{ form.as_p }}
+        {{form.as_p}}
 
         <button type="submit">Registrate!</button>
 
@@ -19,3 +22,4 @@
 
 </body>
 </html>
+{% endblock %}
